@@ -5,15 +5,14 @@ using Test.Cars.Interfaces;
 
 namespace Test.Cars
 {
-    public class Tesla : IElectricCar
+    public class Tesla : Car, IElectricCar
     {
         private int bv;
-        private string model;
 
         public Tesla(int batteryValue, string model)
+            : base(model, 500)
         {
             this.BatteryValue = batteryValue;
-            this.Model = model;
         }
 
         public int BatteryValue
@@ -38,28 +37,6 @@ namespace Test.Cars
             }
         }
 
-        public string Model
-        {
-            get
-            {
-                return this.model;
-            }
-            private set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException($"Model cannot be empty name.");
-                }
-
-                this.model = value;
-            }
-        }
-
-        public void Beep()
-        {
-            Console.WriteLine("Tururur");
-        }
-
         public void ChargeBattery()
         {
             this.BatteryValue++;
@@ -70,10 +47,15 @@ namespace Test.Cars
             Console.WriteLine("Customized!");
         }
 
-        public void Drive()
+        public override void Drive()
         {
             Console.WriteLine("Vroom Vroom!");
             this.BatteryValue--;
+        }
+
+        public override void Beep()
+        {
+            Console.WriteLine("Tururur");
         }
     }
 }

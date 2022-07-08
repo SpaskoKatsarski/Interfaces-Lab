@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Test.Cars.Interfaces;
 
 namespace Test.Cars
 {
-    public abstract class Car
+    public abstract class Car : ICar
     {
         private string model;
         private int hp;
 
-        public Car(string mdoel, int hp)
+        public Car(string model, int hp)
         {
             this.Model = model;
             this.HP = hp;
@@ -49,5 +50,14 @@ namespace Test.Cars
             }
         }
 
+        public virtual void Drive()
+        {
+            Console.WriteLine("Im Driviiing!!!");
+        }
+
+        public virtual void Beep()
+        {
+            Console.WriteLine("Beep beep beep beep");
+        }
     }
 }

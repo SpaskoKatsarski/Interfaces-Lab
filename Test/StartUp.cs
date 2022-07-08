@@ -8,6 +8,7 @@ namespace Test
         static void Main(string[] args)
         {
             Tesla tesla = new Tesla(50, "Model X");
+            Console.WriteLine(tesla.Model);
             Console.WriteLine(tesla.BatteryValue);
 
             for (int i = 0; i < 50; i++)
@@ -19,6 +20,10 @@ namespace Test
             Console.WriteLine(tesla.BatteryValue);
             tesla.Beep();
             tesla.CustomizeHornSound();
+
+            Seat seat = new Seat("650z", 100);
+
+            seat.Drive();
         }
     }
 }
